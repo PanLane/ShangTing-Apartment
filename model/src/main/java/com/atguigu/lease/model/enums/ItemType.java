@@ -11,8 +11,8 @@ public enum ItemType implements BaseEnum {
     ROOM(2, "房间");
 
 
-    @EnumValue
-    @JsonValue
+    @EnumValue//mybatis将int转换为枚举类型
+    @JsonValue//json将int转换为枚举类型
     private Integer code;
     private String name;
 
