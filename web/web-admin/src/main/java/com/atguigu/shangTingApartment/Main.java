@@ -1,4 +1,4 @@
-package com.atguigu.shangTingApartment.web.admin;
+package com.atguigu.shangTingApartment;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
