@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.admin.service;
 
 import com.atguigu.lease.model.entity.FeeKey;
+import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo;
+import com.atguigu.shangTingApartment.web.admin.vo.fee.FeeKeyVo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -10,4 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface FeeKeyService extends IService<FeeKey> {
 
+    /**
+     * 查询全部杂费名称和杂费值
+     * @return
+     */
+    List<FeeKeyVo> queryAll();
 }

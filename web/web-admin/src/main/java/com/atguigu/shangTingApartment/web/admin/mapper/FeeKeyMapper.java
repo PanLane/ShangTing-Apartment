@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
 import com.atguigu.lease.model.entity.FeeKey;
+import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo;
+import com.atguigu.shangTingApartment.web.admin.vo.fee.FeeKeyVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -11,6 +15,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface FeeKeyMapper extends BaseMapper<FeeKey> {
 
+    /**
+     * 查询全部杂费名称和杂费值
+     * @return
+     */
+    List<FeeKeyVo> selectAll();
 }
 
 
