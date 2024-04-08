@@ -1,4 +1,4 @@
-package com.atguigu.shangTingApartment.common.config;
+package com.atguigu.shangTingApartment.common.mybatis;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;

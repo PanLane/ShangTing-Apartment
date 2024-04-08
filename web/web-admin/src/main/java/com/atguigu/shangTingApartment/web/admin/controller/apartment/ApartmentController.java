@@ -4,13 +4,16 @@ package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 import com.atguigu.shangTingApartment.common.result.Result;
 import com.atguigu.lease.model.entity.ApartmentInfo;
 import com.atguigu.lease.model.enums.ReleaseStatus;
+import com.atguigu.shangTingApartment.web.admin.service.ApartmentInfoService;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentDetailVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentItemVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentQueryVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentSubmitVo;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,6 +23,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/apartment")
 public class ApartmentController {
+
+    @Autowired
+    ApartmentInfoService apartmentInfoService;
 
     @Operation(summary = "保存或更新公寓信息")
     @PostMapping("saveOrUpdate")
@@ -48,12 +54,16 @@ public class ApartmentController {
     @Operation(summary = "根据id修改公寓发布状态")
     @PostMapping("updateReleaseStatusById")
     public Result updateReleaseStatusById(@RequestParam Long id, @RequestParam ReleaseStatus status) {
+        LambdaUpdateWrapper<ApartmentInfo> wrapper = new LambdaUpdateWrapper<>();
+        //wrapper.eq(ApartmentInfo::getId,id).set()
         return Result.ok();
     }
 
     @Operation(summary = "根据区县id查询公寓信息列表")
     @GetMapping("listInfoByDistrictId")
     public Result<List<ApartmentInfo>> listInfoByDistrictId(@RequestParam Long id) {
+        LambdaUpdateWrapper<ApartmentInfo> wrapper = new LambdaUpdateWrapper<>();
+
         return Result.ok();
     }
 }
