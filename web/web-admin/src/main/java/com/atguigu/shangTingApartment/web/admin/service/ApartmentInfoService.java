@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.admin.service;
 
 import com.atguigu.lease.model.entity.ApartmentInfo;
+import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentDetailVo;
+import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentSubmitVo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -10,4 +14,35 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface ApartmentInfoService extends IService<ApartmentInfo> {
 
+    /**
+     * 保存或更新公寓信息
+     * @param apartmentSubmitVo
+     */
+    void customSaveOrUpdate(ApartmentSubmitVo apartmentSubmitVo);
+
+    /**
+     * 根据id删除公寓信息，及与之关联的信息
+     * @param id
+     */
+    void customRemoveById(Long id);
+
+    /**
+     * 根据公寓id删除与之关联的信息
+     * @param id
+     */
+    void customRemoveRelationData(Long id);
+
+    /**
+     * 根据公寓id获取公寓详细信息
+     * @param id
+     * @return
+     */
+    ApartmentDetailVo queryDetailById(Long id);
+
+    /**
+     * 根据区县id获取公寓信息
+     * @param id
+     * @return
+     */
+    List<ApartmentInfo> listInfoByDistrictId(Long id);
 }

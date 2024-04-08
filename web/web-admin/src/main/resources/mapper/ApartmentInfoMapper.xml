@@ -4,4 +4,66 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.shangTingApartment.web.admin.mapper.ApartmentInfoMapper">
 
+    <resultMap id="detailMap" type="com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentDetailVo">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="introduction" column="introduction"/>
+        <result property="districtId" column="district_id"/>
+        <result property="districtName" column="district_name"/>
+        <result property="cityId" column="city_id"/>
+        <result property="cityName" column="city_name"/>
+        <result property="provinceId" column="province_id"/>
+        <result property="provinceName" column="province_name"/>
+        <result property="addressDetail" column="address_detail"/>
+        <result property="latitude" column="latitude"/>
+        <result property="longitude" column="longitude"/>
+        <result property="phone" column="phone"/>
+        <result property="isRelease" column="is_release"/>
+        <collection property="graphVoList" ofType="com.atguigu.shangTingApartment.web.admin.vo.graph.GraphVo">
+            <result property="name" column="gra_name"/>
+            <result property="url" column="gra_url"/>
+        </collection>
+        <collection property="labelInfoList" ofType="com.atguigu.lease.model.entity.LabelInfo">
+            <id property="id" column="lab_id"/>
+            <result property="type" column="lab_type"/>
+            <result property="name" column="lab_name"/>
+        </collection>
+        <collection property="facilityInfoList" ofType="com.atguigu.lease.model.entity.FacilityInfo">
+            <id property="id" column="fac_id"/>
+            <result property="type" column="fac_type"/>
+            <result property="name" column="fac_name"/>
+            <result property="icon" column="fac_icon"/>
+        </collection>
+        <collection property="feeValueVoList" ofType="com.atguigu.shangTingApartment.web.admin.vo.fee.FeeValueVo">
+            <id property="id" column="fee_id"/>
+            <result property="name" column="fee_name"/>
+            <result property="unit" column="fee_unit"/>
+            <result property="feeKeyId" column="fee_fee_key_id"/>
+            <result property="feeKeyName" column="fee_fee_key_name"/>
+        </collection>
+    </resultMap>
+    <select id="selectDetailById" resultMap="detailMap">
+        select apartment_info.id,apartment_info.name,introduction,district_id,district_name,city_id,city_name,province_id,province_name,address_detail,latitude,
+               longitude,phone,is_release,gra.name gra_name,gra.url gra_url,lab.id lab_id,lab.type lab_type,lab.name lab_name,
+               fac.id fac_id,fac.type fac_type,fac.name fac_name,fac.icon fac_icon,fee.id fee_id,fee.name fee_name,
+               fee.unit fee_unit,fee.fee_key_id fee_fee_key_id,fee_key.name fee_fee_key_name
+        from apartment_info
+                 left join apartment_facility afac on afac.apartment_id = apartment_info.id and afac.is_deleted = 0
+                 left join facility_info fac on fac.is_deleted = 0 and fac.id = afac.facility_id and afac.facility_id = fac.id
+                 left join apartment_label alab on alab.apartment_id = apartment_info.id and alab.is_deleted = 0
+                 left join label_info lab on lab.is_deleted = 0 and alab.label_id = lab.id
+                 left join apartment_fee_value afee on afee.apartment_id = apartment_info.id and afee.is_deleted = 0
+                 left join fee_value fee on fee.is_deleted = 0 and afee.fee_value_id = fee.id
+                 left join graph_info gra on gra.item_type = 1 and gra.item_id = apartment_info.id and gra.is_deleted = 0
+                 left join fee_key on fee_key.id = fee.fee_key_id and fee_key.is_deleted = 0
+        where apartment_info.id = #{id} and apartment_info.is_deleted = 0
+    </select>
+
+    <select id="selectListByDistrictId" resultType="com.atguigu.lease.model.entity.ApartmentInfo">
+        select apartment_info.id,apartment_info.name,introduction,district_id,district_name,apartment_info.city_id,city_name,province_id,
+               province_name,address_detail,latitude,longitude,phone,is_release
+        from apartment_info
+         join district_info on district_info.name = apartment_info.district_name
+        where district_info.id = #{id}
+    </select>
 </mapper>
