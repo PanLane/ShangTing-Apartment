@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
 import com.atguigu.shangTingApartment.model.entity.ViewAppointment;
+import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentQueryVo;
+import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
 
 /**
 * @author liubo
@@ -11,6 +15,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface ViewAppointmentMapper extends BaseMapper<ViewAppointment> {
 
+    /**
+     * 分页查询预约信息
+     * @param page
+     * @param queryVo
+     * @return
+     */
+    Page<AppointmentVo> selectCustomPage(Page<AppointmentVo> page,@Param("queryVo") AppointmentQueryVo queryVo);
 }
 
 

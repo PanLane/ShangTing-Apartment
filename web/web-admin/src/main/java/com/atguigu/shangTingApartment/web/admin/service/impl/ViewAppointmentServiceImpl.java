@@ -3,7 +3,11 @@ package com.atguigu.shangTingApartment.web.admin.service.impl;
 import com.atguigu.shangTingApartment.model.entity.ViewAppointment;
 import com.atguigu.shangTingApartment.web.admin.mapper.ViewAppointmentMapper;
 import com.atguigu.shangTingApartment.web.admin.service.ViewAppointmentService;
+import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentQueryVo;
+import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,6 +19,13 @@ import org.springframework.stereotype.Service;
 public class ViewAppointmentServiceImpl extends ServiceImpl<ViewAppointmentMapper, ViewAppointment>
         implements ViewAppointmentService {
 
+    @Autowired
+    ViewAppointmentMapper viewAppointmentMapper;
+
+    @Override
+    public Page<AppointmentVo> customPage(Page<AppointmentVo> page, AppointmentQueryVo queryVo) {
+        return viewAppointmentMapper.selectCustomPage(page,queryVo);
+    }
 }
 
 

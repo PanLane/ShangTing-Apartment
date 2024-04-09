@@ -1,13 +1,18 @@
 package com.atguigu.shangTingApartment.web.admin.controller.lease;
 
 
+import com.atguigu.shangTingApartment.model.entity.ViewAppointment;
 import com.atguigu.shangTingApartment.model.enums.AppointmentStatus;
 import com.atguigu.shangTingApartment.common.result.Result;
+import com.atguigu.shangTingApartment.web.admin.service.ViewAppointmentService;
 import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentQueryVo;
 import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentVo;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -16,16 +21,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ViewAppointmentController {
 
+    @Autowired
+    ViewAppointmentService viewAppointmentService;
+
     @Operation(summary = "分页查询预约信息")
     @GetMapping("page")
     public Result<IPage<AppointmentVo>> page(@RequestParam long current, @RequestParam long size, AppointmentQueryVo queryVo) {
-        return Result.ok();
+        Page<AppointmentVo> page = new Page<>();
+        page.setCurrent(current).setSize(size);
+        page = viewAppointmentService.customPage(page,queryVo);
+        return Result.ok(page);
     }
 
     @Operation(summary = "根据id更新预约状态")
     @PostMapping("updateStatusById")
     public Result updateStatusById(@RequestParam Long id, @RequestParam AppointmentStatus status) {
-        return Result.ok();
+        LambdaUpdateWrapper<ViewAppointment> wrapper = new LambdaUpdateWrapper<>();
+        wrapper.eq(ViewAppointment::getId,id).set(ViewAppointment::getAppointmentStatus,status);
+        return viewAppointmentService.update(wrapper)? Result.ok() : Result.fail();
     }
 
 }
