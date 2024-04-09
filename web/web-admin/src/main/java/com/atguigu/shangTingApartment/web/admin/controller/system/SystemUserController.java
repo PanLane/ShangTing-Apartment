@@ -2,8 +2,8 @@ package com.atguigu.shangTingApartment.web.admin.controller.system;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.SystemUser;
-import com.atguigu.lease.model.enums.BaseStatus;
+import com.atguigu.shangTingApartment.model.entity.SystemUser;
+import com.atguigu.shangTingApartment.model.enums.BaseStatus;
 import com.atguigu.shangTingApartment.web.admin.vo.system.user.SystemUserItemVo;
 import com.atguigu.shangTingApartment.web.admin.vo.system.user.SystemUserQueryVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;

@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service.impl;
 
-import com.atguigu.lease.model.entity.AttrKey;
+import com.atguigu.shangTingApartment.model.entity.AttrKey;
 import com.atguigu.shangTingApartment.web.admin.mapper.AttrKeyMapper;
 import com.atguigu.shangTingApartment.web.admin.service.AttrKeyService;
 import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo;

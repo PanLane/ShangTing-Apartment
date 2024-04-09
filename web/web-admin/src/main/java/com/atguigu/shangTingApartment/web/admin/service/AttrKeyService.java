@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service;
 
-import com.atguigu.lease.model.entity.AttrKey;
+import com.atguigu.shangTingApartment.model.entity.AttrKey;
 import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 

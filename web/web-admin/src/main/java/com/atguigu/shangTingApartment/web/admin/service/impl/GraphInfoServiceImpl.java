@@ -2,7 +2,7 @@ package com.atguigu.shangTingApartment.web.admin.service.impl;
 
 import com.atguigu.shangTingApartment.web.admin.service.GraphInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.lease.model.entity.GraphInfo;
+import com.atguigu.shangTingApartment.model.entity.GraphInfo;
 import com.atguigu.shangTingApartment.web.admin.mapper.GraphInfoMapper;
 import org.springframework.stereotype.Service;
 

@@ -2,8 +2,8 @@ package com.atguigu.shangTingApartment.web.admin.controller.user;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.UserInfo;
-import com.atguigu.lease.model.enums.BaseStatus;
+import com.atguigu.shangTingApartment.model.entity.UserInfo;
+import com.atguigu.shangTingApartment.model.enums.BaseStatus;
 import com.atguigu.shangTingApartment.web.admin.vo.user.UserInfoQueryVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.v3.oas.annotations.Operation;

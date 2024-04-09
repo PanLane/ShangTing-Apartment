@@ -23,12 +23,12 @@
             <result property="name" column="gra_name"/>
             <result property="url" column="gra_url"/>
         </collection>
-        <collection property="labelInfoList" ofType="com.atguigu.lease.model.entity.LabelInfo">
+        <collection property="labelInfoList" ofType="com.atguigu.shangTingApartment.model.entity.LabelInfo">
             <id property="id" column="lab_id"/>
             <result property="type" column="lab_type"/>
             <result property="name" column="lab_name"/>
         </collection>
-        <collection property="facilityInfoList" ofType="com.atguigu.lease.model.entity.FacilityInfo">
+        <collection property="facilityInfoList" ofType="com.atguigu.shangTingApartment.model.entity.FacilityInfo">
             <id property="id" column="fac_id"/>
             <result property="type" column="fac_type"/>
             <result property="name" column="fac_name"/>

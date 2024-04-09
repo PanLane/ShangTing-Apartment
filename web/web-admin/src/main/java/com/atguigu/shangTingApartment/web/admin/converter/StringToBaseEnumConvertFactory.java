@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.converter;
 
-import com.atguigu.lease.model.enums.BaseEnum;
+import com.atguigu.shangTingApartment.model.enums.BaseEnum;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 import org.springframework.stereotype.Component;

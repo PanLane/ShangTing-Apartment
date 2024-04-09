@@ -7,7 +7,7 @@
     <resultMap id="attrKeyVoMap" type="com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo">
         <id column="k_id" property="id"/>
         <result column="k_name" property="name"/>
-        <collection property="attrValueList" ofType="com.atguigu.lease.model.entity.AttrValue">
+        <collection property="attrValueList" ofType="com.atguigu.shangTingApartment.model.entity.AttrValue">
             <id column="v_id" property="id"/>
             <result column="v_name" property="name"/>
             <result column="attr_key_id" property="attrKeyId"/>

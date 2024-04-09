@@ -1,9 +1,9 @@
 package com.atguigu.shangTingApartment.web.admin.vo.apartment;
 
 
-import com.atguigu.lease.model.entity.ApartmentInfo;
-import com.atguigu.lease.model.entity.FacilityInfo;
-import com.atguigu.lease.model.entity.LabelInfo;
+import com.atguigu.shangTingApartment.model.entity.ApartmentInfo;
+import com.atguigu.shangTingApartment.model.entity.FacilityInfo;
+import com.atguigu.shangTingApartment.model.entity.LabelInfo;
 import com.atguigu.shangTingApartment.web.admin.vo.graph.GraphVo;
 import com.atguigu.shangTingApartment.web.admin.vo.fee.FeeValueVo;
 import io.swagger.v3.oas.annotations.media.Schema;

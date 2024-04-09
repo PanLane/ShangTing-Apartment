@@ -1,7 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.service.impl;
 
-import com.atguigu.lease.model.entity.*;
-import com.atguigu.lease.model.enums.ItemType;
+import com.atguigu.shangTingApartment.model.entity.*;
+import com.atguigu.shangTingApartment.model.enums.ItemType;
 import com.atguigu.shangTingApartment.web.admin.mapper.*;
 import com.atguigu.shangTingApartment.web.admin.service.*;
 import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrValueVo;

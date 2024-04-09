@@ -1,14 +1,12 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
-import com.atguigu.lease.model.entity.ApartmentInfo;
+import com.atguigu.shangTingApartment.model.entity.ApartmentInfo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentDetailVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentItemVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentQueryVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.ibatis.annotations.Param;
-
-import java.util.List;
 
 /**
 * @author liubo

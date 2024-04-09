@@ -2,7 +2,7 @@ package com.atguigu.shangTingApartment.web.admin.service.impl;
 
 import com.atguigu.shangTingApartment.web.admin.service.LabelInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.lease.model.entity.LabelInfo;
+import com.atguigu.shangTingApartment.model.entity.LabelInfo;
 import com.atguigu.shangTingApartment.web.admin.mapper.LabelInfoMapper;
 import org.springframework.stereotype.Service;
 

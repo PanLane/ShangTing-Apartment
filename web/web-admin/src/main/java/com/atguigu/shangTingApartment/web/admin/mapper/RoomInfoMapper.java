@@ -1,8 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
-import com.atguigu.lease.model.entity.*;
+import com.atguigu.shangTingApartment.model.entity.*;
 import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrValueVo;
-import com.atguigu.shangTingApartment.web.admin.vo.graph.GraphVo;
 import com.atguigu.shangTingApartment.web.admin.vo.room.RoomItemVo;
 import com.atguigu.shangTingApartment.web.admin.vo.room.RoomQueryVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;

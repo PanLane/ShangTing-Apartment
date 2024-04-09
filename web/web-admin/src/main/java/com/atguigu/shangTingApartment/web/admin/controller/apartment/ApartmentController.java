@@ -1,10 +1,9 @@
 package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 
 
-import com.atguigu.lease.model.entity.DistrictInfo;
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.ApartmentInfo;
-import com.atguigu.lease.model.enums.ReleaseStatus;
+import com.atguigu.shangTingApartment.model.entity.ApartmentInfo;
+import com.atguigu.shangTingApartment.model.enums.ReleaseStatus;
 import com.atguigu.shangTingApartment.web.admin.service.ApartmentInfoService;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentDetailVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentItemVo;
@@ -19,9 +18,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Tag(name = "公寓信息管理")

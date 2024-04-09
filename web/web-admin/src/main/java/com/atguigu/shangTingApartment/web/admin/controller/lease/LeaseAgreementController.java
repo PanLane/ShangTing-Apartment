@@ -2,8 +2,8 @@ package com.atguigu.shangTingApartment.web.admin.controller.lease;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.LeaseAgreement;
-import com.atguigu.lease.model.enums.LeaseStatus;
+import com.atguigu.shangTingApartment.model.entity.LeaseAgreement;
+import com.atguigu.shangTingApartment.model.enums.LeaseStatus;
 import com.atguigu.shangTingApartment.web.admin.vo.agreement.AgreementQueryVo;
 import com.atguigu.shangTingApartment.web.admin.vo.agreement.AgreementVo;
 import com.baomidou.mybatisplus.core.metadata.IPage;

@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.vo.room;
 
-import com.atguigu.lease.model.entity.*;
+import com.atguigu.shangTingApartment.model.entity.*;
 import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrValueVo;
 import com.atguigu.shangTingApartment.web.admin.vo.graph.GraphVo;
 import io.swagger.v3.oas.annotations.media.Schema;

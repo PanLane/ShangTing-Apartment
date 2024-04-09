@@ -1,9 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
-import com.atguigu.lease.model.entity.FacilityInfo;
+import com.atguigu.shangTingApartment.model.entity.FacilityInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-
-import java.util.List;
 
 /**
 * @author liubo

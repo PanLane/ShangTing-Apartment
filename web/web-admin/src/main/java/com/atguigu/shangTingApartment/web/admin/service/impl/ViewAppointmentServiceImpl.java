@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service.impl;
 
-import com.atguigu.lease.model.entity.ViewAppointment;
+import com.atguigu.shangTingApartment.model.entity.ViewAppointment;
 import com.atguigu.shangTingApartment.web.admin.mapper.ViewAppointmentMapper;
 import com.atguigu.shangTingApartment.web.admin.service.ViewAppointmentService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

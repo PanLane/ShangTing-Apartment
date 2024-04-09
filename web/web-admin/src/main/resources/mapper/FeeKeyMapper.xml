@@ -7,7 +7,7 @@
     <resultMap id="feeKeyVoMap" type="com.atguigu.shangTingApartment.web.admin.vo.fee.FeeKeyVo">
         <id column="k_id" property="id"/>
         <result column="k_name" property="name"/>
-        <collection property="feeValueList" ofType="com.atguigu.lease.model.entity.FeeValue">
+        <collection property="feeValueList" ofType="com.atguigu.shangTingApartment.model.entity.FeeValue">
             <id column="v_id" property="id"/>
             <result column="v_name" property="name"/>
             <result column="unit" property="unit"/>

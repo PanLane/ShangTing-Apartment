@@ -1,7 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.service.impl;
 
-import com.atguigu.lease.model.entity.*;
-import com.atguigu.lease.model.enums.ItemType;
+import com.atguigu.shangTingApartment.model.entity.*;
+import com.atguigu.shangTingApartment.model.enums.ItemType;
 import com.atguigu.shangTingApartment.common.exceptions.ApartmentCustomException;
 import com.atguigu.shangTingApartment.common.result.ResultCodeEnum;
 import com.atguigu.shangTingApartment.web.admin.mapper.ApartmentInfoMapper;
@@ -12,7 +12,6 @@ import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentQueryVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentSubmitVo;
 import com.atguigu.shangTingApartment.web.admin.vo.graph.GraphVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**

@@ -1,8 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.converter;
 
-import com.atguigu.lease.model.enums.ItemType;
+import com.atguigu.shangTingApartment.model.enums.ItemType;
 import org.springframework.core.convert.converter.Converter;
-import org.springframework.stereotype.Component;
 
 //@Component
 public class StringToItemTypeConvert implements Converter<String,ItemType> {

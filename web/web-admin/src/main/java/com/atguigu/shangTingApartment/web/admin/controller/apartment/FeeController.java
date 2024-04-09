@@ -1,13 +1,11 @@
 package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 
 
-import com.atguigu.lease.model.entity.AttrValue;
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.FeeKey;
-import com.atguigu.lease.model.entity.FeeValue;
+import com.atguigu.shangTingApartment.model.entity.FeeKey;
+import com.atguigu.shangTingApartment.model.entity.FeeValue;
 import com.atguigu.shangTingApartment.web.admin.service.FeeKeyService;
 import com.atguigu.shangTingApartment.web.admin.service.FeeValueService;
-import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo;
 import com.atguigu.shangTingApartment.web.admin.vo.fee.FeeKeyVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.v3.oas.annotations.Operation;

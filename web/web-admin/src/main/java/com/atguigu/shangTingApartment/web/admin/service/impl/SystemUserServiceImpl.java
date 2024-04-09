@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service.impl;
 
-import com.atguigu.lease.model.entity.SystemUser;
+import com.atguigu.shangTingApartment.model.entity.SystemUser;
 import com.atguigu.shangTingApartment.web.admin.mapper.SystemUserMapper;
 import com.atguigu.shangTingApartment.web.admin.service.SystemUserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

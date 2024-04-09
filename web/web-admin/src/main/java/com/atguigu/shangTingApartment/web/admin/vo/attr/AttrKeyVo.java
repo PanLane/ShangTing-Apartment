@@ -1,7 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.vo.attr;
 
-import com.atguigu.lease.model.entity.AttrKey;
-import com.atguigu.lease.model.entity.AttrValue;
+import com.atguigu.shangTingApartment.model.entity.AttrKey;
+import com.atguigu.shangTingApartment.model.entity.AttrValue;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

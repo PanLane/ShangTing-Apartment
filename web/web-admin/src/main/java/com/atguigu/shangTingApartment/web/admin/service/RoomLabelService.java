@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service;
 
-import com.atguigu.lease.model.entity.RoomLabel;
+import com.atguigu.shangTingApartment.model.entity.RoomLabel;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

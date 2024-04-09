@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
-import com.atguigu.lease.model.entity.AttrValue;
+import com.atguigu.shangTingApartment.model.entity.AttrValue;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

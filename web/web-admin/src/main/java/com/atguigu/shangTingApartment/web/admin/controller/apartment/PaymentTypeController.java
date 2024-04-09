@@ -2,9 +2,8 @@ package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.PaymentType;
+import com.atguigu.shangTingApartment.model.entity.PaymentType;
 import com.atguigu.shangTingApartment.web.admin.service.PaymentTypeService;
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

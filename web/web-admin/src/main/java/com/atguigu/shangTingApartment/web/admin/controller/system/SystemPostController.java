@@ -1,8 +1,8 @@
 package com.atguigu.shangTingApartment.web.admin.controller.system;
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.SystemPost;
-import com.atguigu.lease.model.enums.BaseStatus;
+import com.atguigu.shangTingApartment.model.entity.SystemPost;
+import com.atguigu.shangTingApartment.model.enums.BaseStatus;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

@@ -1,7 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
-import com.atguigu.lease.model.entity.FeeKey;
-import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo;
+import com.atguigu.shangTingApartment.model.entity.FeeKey;
 import com.atguigu.shangTingApartment.web.admin.vo.fee.FeeKeyVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 

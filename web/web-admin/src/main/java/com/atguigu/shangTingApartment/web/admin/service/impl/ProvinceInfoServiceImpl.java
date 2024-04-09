@@ -2,7 +2,7 @@ package com.atguigu.shangTingApartment.web.admin.service.impl;
 
 import com.atguigu.shangTingApartment.web.admin.service.ProvinceInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.lease.model.entity.ProvinceInfo;
+import com.atguigu.shangTingApartment.model.entity.ProvinceInfo;
 import com.atguigu.shangTingApartment.web.admin.mapper.ProvinceInfoMapper;
 import org.springframework.stereotype.Service;
 

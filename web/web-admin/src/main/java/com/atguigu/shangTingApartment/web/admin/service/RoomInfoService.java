@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service;
 
-import com.atguigu.lease.model.entity.RoomInfo;
+import com.atguigu.shangTingApartment.model.entity.RoomInfo;
 import com.atguigu.shangTingApartment.web.admin.vo.room.RoomDetailVo;
 import com.atguigu.shangTingApartment.web.admin.vo.room.RoomItemVo;
 import com.atguigu.shangTingApartment.web.admin.vo.room.RoomQueryVo;

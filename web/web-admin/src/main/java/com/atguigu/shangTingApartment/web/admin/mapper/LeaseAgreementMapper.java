@@ -1,8 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
-import com.atguigu.lease.model.entity.LeaseAgreement;
+import com.atguigu.shangTingApartment.model.entity.LeaseAgreement;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
 
 /**
 * @author liubo

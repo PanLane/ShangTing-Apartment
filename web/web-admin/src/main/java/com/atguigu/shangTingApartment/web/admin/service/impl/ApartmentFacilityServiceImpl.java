@@ -2,7 +2,7 @@ package com.atguigu.shangTingApartment.web.admin.service.impl;
 
 import com.atguigu.shangTingApartment.web.admin.service.ApartmentFacilityService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.atguigu.lease.model.entity.ApartmentFacility;
+import com.atguigu.shangTingApartment.model.entity.ApartmentFacility;
 import com.atguigu.shangTingApartment.web.admin.mapper.ApartmentFacilityMapper;
 import org.springframework.stereotype.Service;
 

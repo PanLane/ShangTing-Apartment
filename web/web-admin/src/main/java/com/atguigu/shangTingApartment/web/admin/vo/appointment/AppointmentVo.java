@@ -1,7 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.vo.appointment;
 
-import com.atguigu.lease.model.entity.ApartmentInfo;
-import com.atguigu.lease.model.entity.ViewAppointment;
+import com.atguigu.shangTingApartment.model.entity.ApartmentInfo;
+import com.atguigu.shangTingApartment.model.entity.ViewAppointment;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

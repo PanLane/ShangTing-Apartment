@@ -1,10 +1,9 @@
 package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 
 
-import com.atguigu.lease.model.entity.LabelInfo;
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.FacilityInfo;
-import com.atguigu.lease.model.enums.ItemType;
+import com.atguigu.shangTingApartment.model.entity.FacilityInfo;
+import com.atguigu.shangTingApartment.model.enums.ItemType;
 import com.atguigu.shangTingApartment.web.admin.service.FacilityInfoService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import io.swagger.v3.oas.annotations.Operation;

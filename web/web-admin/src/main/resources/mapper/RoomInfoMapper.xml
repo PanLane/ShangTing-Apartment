@@ -7,7 +7,7 @@
     <resultMap id="roomItemVoMap" type="com.atguigu.shangTingApartment.web.admin.vo.room.RoomItemVo">
         <id property="id" column="r_id"/>
         <result property="isRelease" column="r_is_release"/>
-        <association property="apartmentInfo" javaType="com.atguigu.lease.model.entity.ApartmentInfo">
+        <association property="apartmentInfo" javaType="com.atguigu.shangTingApartment.model.entity.ApartmentInfo">
             <id property="id" column="a_id"/>
             <result property="isRelease" column="a_is_release"/>
         </association>
@@ -43,25 +43,25 @@
         join room_attr_value rav on rav.attr_value_id = av.id
         where rav.room_id = #{id} and ak.is_deleted = 0 and av.is_deleted = 0 and rav.is_deleted = 0
     </select>
-    <select id="selectFacilityInfoList" resultType="com.atguigu.lease.model.entity.FacilityInfo">
+    <select id="selectFacilityInfoList" resultType="com.atguigu.shangTingApartment.model.entity.FacilityInfo">
         select f.id,f.type,f.name,f.icon
         from facility_info f
         join room_facility rf on rf.facility_id = f.id
         where rf.room_id = #{id} and f.is_deleted = 0 and rf.is_deleted = 0
     </select>
-    <select id="selectLabelInfoList" resultType="com.atguigu.lease.model.entity.LabelInfo">
+    <select id="selectLabelInfoList" resultType="com.atguigu.shangTingApartment.model.entity.LabelInfo">
         select l.id,l.type,l.name
         from label_info l
         join room_label rl on rl.label_id = l.id
         where rl.room_id = #{id} and rl.is_deleted = 0 and l.is_deleted = 0
     </select>
-    <select id="selectPaymentTypeList" resultType="com.atguigu.lease.model.entity.PaymentType">
+    <select id="selectPaymentTypeList" resultType="com.atguigu.shangTingApartment.model.entity.PaymentType">
         select p.id,p.name,p.pay_month_count,p.additional_info
         from payment_type p
         join room_payment_type rp on rp.payment_type_id = p.id
         where rp.room_id = #{id} and rp.is_deleted = 0 and p.is_deleted = 0
     </select>
-    <select id="selectLeaseTermList" resultType="com.atguigu.lease.model.entity.LeaseTerm">
+    <select id="selectLeaseTermList" resultType="com.atguigu.shangTingApartment.model.entity.LeaseTerm">
         select l.id,l.month_count,l.unit
         from lease_term l
         join room_lease_term rl on rl.lease_term_id = l.id

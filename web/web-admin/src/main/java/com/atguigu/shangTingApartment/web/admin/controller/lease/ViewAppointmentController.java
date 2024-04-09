@@ -1,7 +1,7 @@
 package com.atguigu.shangTingApartment.web.admin.controller.lease;
 
 
-import com.atguigu.lease.model.enums.AppointmentStatus;
+import com.atguigu.shangTingApartment.model.enums.AppointmentStatus;
 import com.atguigu.shangTingApartment.common.result.Result;
 import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentQueryVo;
 import com.atguigu.shangTingApartment.web.admin.vo.appointment.AppointmentVo;

@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service;
 
-import com.atguigu.lease.model.entity.LeaseTerm;
+import com.atguigu.shangTingApartment.model.entity.LeaseTerm;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

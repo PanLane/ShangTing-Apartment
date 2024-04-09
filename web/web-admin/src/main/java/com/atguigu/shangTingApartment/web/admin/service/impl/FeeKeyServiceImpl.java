@@ -1,9 +1,8 @@
 package com.atguigu.shangTingApartment.web.admin.service.impl;
 
-import com.atguigu.lease.model.entity.FeeKey;
+import com.atguigu.shangTingApartment.model.entity.FeeKey;
 import com.atguigu.shangTingApartment.web.admin.mapper.FeeKeyMapper;
 import com.atguigu.shangTingApartment.web.admin.service.FeeKeyService;
-import com.atguigu.shangTingApartment.web.admin.vo.attr.AttrKeyVo;
 import com.atguigu.shangTingApartment.web.admin.vo.fee.FeeKeyVo;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

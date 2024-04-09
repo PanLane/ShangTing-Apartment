@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.vo.agreement;
 
-import com.atguigu.lease.model.entity.*;
+import com.atguigu.shangTingApartment.model.entity.*;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 

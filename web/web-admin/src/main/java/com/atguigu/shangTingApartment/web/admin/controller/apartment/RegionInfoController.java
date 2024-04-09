@@ -2,9 +2,9 @@ package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.CityInfo;
-import com.atguigu.lease.model.entity.DistrictInfo;
-import com.atguigu.lease.model.entity.ProvinceInfo;
+import com.atguigu.shangTingApartment.model.entity.CityInfo;
+import com.atguigu.shangTingApartment.model.entity.DistrictInfo;
+import com.atguigu.shangTingApartment.model.entity.ProvinceInfo;
 import com.atguigu.shangTingApartment.web.admin.service.CityInfoService;
 import com.atguigu.shangTingApartment.web.admin.service.DistrictInfoService;
 import com.atguigu.shangTingApartment.web.admin.service.ProvinceInfoService;

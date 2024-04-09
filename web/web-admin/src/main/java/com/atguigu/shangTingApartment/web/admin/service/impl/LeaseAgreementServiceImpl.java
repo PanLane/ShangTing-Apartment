@@ -1,6 +1,6 @@
 package com.atguigu.shangTingApartment.web.admin.service.impl;
 
-import com.atguigu.lease.model.entity.LeaseAgreement;
+import com.atguigu.shangTingApartment.model.entity.LeaseAgreement;
 import com.atguigu.shangTingApartment.web.admin.mapper.LeaseAgreementMapper;
 import com.atguigu.shangTingApartment.web.admin.service.LeaseAgreementService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

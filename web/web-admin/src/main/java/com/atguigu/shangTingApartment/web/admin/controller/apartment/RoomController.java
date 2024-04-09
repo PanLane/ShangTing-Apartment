@@ -2,8 +2,8 @@ package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.RoomInfo;
-import com.atguigu.lease.model.enums.ReleaseStatus;
+import com.atguigu.shangTingApartment.model.entity.RoomInfo;
+import com.atguigu.shangTingApartment.model.enums.ReleaseStatus;
 import com.atguigu.shangTingApartment.web.admin.service.RoomInfoService;
 import com.atguigu.shangTingApartment.web.admin.vo.room.RoomDetailVo;
 import com.atguigu.shangTingApartment.web.admin.vo.room.RoomItemVo;
@@ -15,7 +15,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

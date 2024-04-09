@@ -2,7 +2,7 @@ package com.atguigu.shangTingApartment.web.admin.controller.apartment;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
-import com.atguigu.lease.model.entity.LeaseTerm;
+import com.atguigu.shangTingApartment.model.entity.LeaseTerm;
 import com.atguigu.shangTingApartment.web.admin.service.LeaseTermService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
