@@ -23,7 +23,7 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
+    auto-mapping-behavior: full
 minio:
   endpoint: http://120.46.137.83:9000
   access-key: minioadmin
