@@ -59,11 +59,24 @@
         where apartment_info.id = #{id} and apartment_info.is_deleted = 0
     </select>
 
-    <select id="selectListByDistrictId" resultType="com.atguigu.lease.model.entity.ApartmentInfo">
-        select apartment_info.id,apartment_info.name,introduction,district_id,district_name,apartment_info.city_id,city_name,province_id,
-               province_name,address_detail,latitude,longitude,phone,is_release
-        from apartment_info
-         join district_info on district_info.name = apartment_info.district_name
-        where district_info.id = #{id}
+    <select id="selectPageItem" resultType="com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentItemVo">
+        select a.id,name,introduction,district_id,district_name,city_id,city_name,province_id,province_name,
+               address_detail,latitude,longitude,phone,is_release,ifnull(r.totalRoomCount,0) totalRoomCount,ifnull(r.totalRoomCount,0)-ifnull(l.leaseRoomCount,0) freeRoomCount
+        from apartment_info a
+        left join
+            (select apartment_id,count(1) totalRoomCount from room_info where is_deleted = 0 and is_release=1 group by apartment_id) r on r.apartment_id=a.id
+        left join
+            (select apartment_id,count(1) leaseRoomCount from lease_agreement where is_deleted = 0 and status in (2,5,7) group by apartment_id) l on a.id = l.apartment_id
+        where
+              is_deleted = 0
+              <if test="queryVo.provinceId !=null and queryVo.provinceId>0">
+                  and province_id = #{queryVo.provinceId}
+              </if>
+              <if test="queryVo.cityId !=null and queryVo.cityId>0">
+                  and city_Id = #{queryVo.cityId}
+              </if>
+              <if test="queryVo.districtId !=null and queryVo.districtId>0">
+                  and district_id = #{queryVo.districtId}
+              </if>
     </select>
 </mapper>

@@ -2,7 +2,11 @@ package com.atguigu.shangTingApartment.web.admin.mapper;
 
 import com.atguigu.lease.model.entity.ApartmentInfo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentDetailVo;
+import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentItemVo;
+import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentQueryVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,11 +26,12 @@ public interface ApartmentInfoMapper extends BaseMapper<ApartmentInfo> {
     ApartmentDetailVo selectDetailById(Long id);
 
     /**
-     * 根据区县id获取公寓信息
-     * @param id
+     * 根据条件分页查询公寓列表
+     * @param page
+     * @param queryVo
      * @return
      */
-    List<ApartmentInfo> selectListByDistrictId(Long id);
+    Page<ApartmentItemVo> selectPageItem(Page<ApartmentItemVo> page,@Param("queryVo") ApartmentQueryVo queryVo);
 }
 
 

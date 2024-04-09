@@ -13,6 +13,7 @@ import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentSubmitVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,10 @@ public class ApartmentController {
     @Operation(summary = "根据条件分页查询公寓列表")
     @GetMapping("pageItem")
     public Result<IPage<ApartmentItemVo>> pageItem(@RequestParam long current, @RequestParam long size, ApartmentQueryVo queryVo) {
-        //Map<String,Object> data = apartmentInfoService.queryPageItem(current,size,queryVo);
-        return Result.ok();
+        Page<ApartmentItemVo> page = new Page<>();
+        page.setCurrent(current).setSize(size);
+        apartmentInfoService.pageItem(page,queryVo);
+        return Result.ok(page);
     }
 
     @Operation(summary = "根据ID获取公寓详细信息")
@@ -71,8 +74,9 @@ public class ApartmentController {
     @Operation(summary = "根据区县id查询公寓信息列表")
     @GetMapping("listInfoByDistrictId")
     public Result<List<ApartmentInfo>> listInfoByDistrictId(@RequestParam Long id) {
-        List<ApartmentInfo> list = apartmentInfoService.listInfoByDistrictId(id);
-        return Result.ok(list);
+        LambdaQueryWrapper<ApartmentInfo> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(ApartmentInfo::getDistrictId,id);
+        return Result.ok(apartmentInfoService.list(wrapper));
     }
 }
 

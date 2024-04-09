@@ -29,3 +29,5 @@ minio:
   access-key: minioadmin
   secret-key: minioadmin
   bucket: pan-ling
+springdoc:
+  default-flat-param-object: true

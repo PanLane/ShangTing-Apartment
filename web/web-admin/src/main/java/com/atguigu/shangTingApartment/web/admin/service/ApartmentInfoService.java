@@ -2,7 +2,10 @@ package com.atguigu.shangTingApartment.web.admin.service;
 
 import com.atguigu.lease.model.entity.ApartmentInfo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentDetailVo;
+import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentItemVo;
+import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentQueryVo;
 import com.atguigu.shangTingApartment.web.admin.vo.apartment.ApartmentSubmitVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
@@ -40,9 +43,10 @@ public interface ApartmentInfoService extends IService<ApartmentInfo> {
     ApartmentDetailVo queryDetailById(Long id);
 
     /**
-     * 根据区县id获取公寓信息
-     * @param id
+     * 根据条件分页查询公寓列表
+     * @param page
+     * @param queryVo
      * @return
      */
-    List<ApartmentInfo> listInfoByDistrictId(Long id);
+    Page<ApartmentItemVo> pageItem(Page<ApartmentItemVo> page, ApartmentQueryVo queryVo);
 }
