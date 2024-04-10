@@ -17,7 +17,7 @@ public class ScheduledTacks {
     private LeaseAgreementService leaseAgreementService;
 
     //每天0:0:0检查租期是否到期
-    @Scheduled(cron = "000***")
+    @Scheduled(cron = "0 0 0 * * *")
     public void checkLeaseStatus(){
         LambdaUpdateWrapper<LeaseAgreement> wrapper = new LambdaUpdateWrapper<>();
         wrapper.gt(LeaseAgreement::getLeaseEndDate,new Date());
