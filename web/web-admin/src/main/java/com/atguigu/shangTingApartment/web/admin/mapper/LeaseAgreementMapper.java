@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.admin.mapper;
 
 import com.atguigu.shangTingApartment.model.entity.LeaseAgreement;
+import com.atguigu.shangTingApartment.web.admin.vo.agreement.AgreementQueryVo;
+import com.atguigu.shangTingApartment.web.admin.vo.agreement.AgreementVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.apache.ibatis.annotations.Param;
 
 /**
 * @author liubo
@@ -11,6 +15,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface LeaseAgreementMapper extends BaseMapper<LeaseAgreement> {
 
+    /**
+     * 根据条件分页查询租约列表
+     * @param page
+     * @param queryVo
+     * @return
+     */
+    Page<AgreementVo> selectCustomPage(Page<AgreementVo> page,@Param("queryVo") AgreementQueryVo queryVo);
 }
 
 

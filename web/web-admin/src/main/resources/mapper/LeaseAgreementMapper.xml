@@ -4,4 +4,68 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.shangTingApartment.web.admin.mapper.LeaseAgreementMapper">
 
+    <resultMap id="agreementVoMap" type="com.atguigu.shangTingApartment.web.admin.vo.agreement.AgreementVo">
+        <id property="id" column="agr_id"/>
+        <result property="phone" column="agr_phone"/>
+        <result property="name" column="agr_name"/>
+        <result property="apartmentId" column="agr_apartment_id"/>
+        <result property="rent" column="agr_rent"/>
+        <result property="additionalInfo" column="agr_additional_info"/>
+        <association property="apartmentInfo" javaType="com.atguigu.shangTingApartment.model.entity.ApartmentInfo">
+            <id property="id" column="apr_id"/>
+            <result property="name" column="apr_name"/>
+            <result property="phone" column="apr_phone"/>
+            <result property="isRelease" column="apr_is_release"/>
+        </association>
+        <association property="roomInfo" javaType="com.atguigu.shangTingApartment.model.entity.RoomInfo">
+            <id property="id" column="r_id"/>
+            <result property="rent" column="r_rent"/>
+            <result property="apartmentId" column="r_apartment_id"/>
+            <result property="isRelease" column="r_is_release"/>
+        </association>
+        <association property="paymentType" javaType="com.atguigu.shangTingApartment.model.entity.PaymentType">
+            <id property="id" column="pay_id"/>
+            <result property="name" column="pay_name"/>
+            <result property="additionalInfo" column="pay_additional_info"/>
+        </association>
+        <association property="leaseTerm" javaType="com.atguigu.shangTingApartment.model.entity.LeaseTerm">
+            <id property="id" column="l_id"/>
+        </association>
+    </resultMap>
+    <select id="selectCustomPage" resultMap="agreementVoMap">
+        select
+               agr.id agr_id,agr.phone agr_phone,agr.name agr_name,identification_number,agr.apartment_id agr_apartment_id,room_id,lease_start_date,lease_end_date,lease_term_id,agr.rent agr_rent,deposit,payment_type_id,status,source_type,agr.additional_info agr_additional_info,
+               apr.id apr_id,apr.name apr_name,introduction,district_id,district_name,city_id,city_name,province_id,province_name,address_detail,latitude,longitude,apr.phone apr_phone,apr.is_release apr_is_release,
+               r.id r_id,room_number,r.rent r_rent,r.apartment_id r_apartment_id,r.is_release r_is_release,
+               pay.id pay_id,pay.name pay_name,pay_month_count,pay.additional_info pay_additional_info,
+               l.id l_id,month_count,unit
+        from lease_agreement agr
+        left join apartment_info apr on apr.id = agr.apartment_id and apr.is_deleted = 0
+        left join room_info r on r.id = agr.room_id and r.is_deleted = 0
+        left join payment_type pay on agr.payment_type_id = pay.id and pay.is_deleted = 0
+        left join lease_term l on agr.lease_term_id = l.id and l.is_deleted = 0
+        <where>
+            <if test="queryVo.provinceId !=null and queryVo.provinceId > 0">
+                and apr.province_id = #{queryVo.provinceId}
+            </if>
+            <if test="queryVo.cityId !=null and queryVo.cityId > 0">
+                and apr.city_id = #{queryVo.cityId}
+            </if>
+            <if test="queryVo.districtId !=null and queryVo.districtId > 0">
+                and apr.district_id = #{queryVo.districtId}
+            </if>
+            <if test="queryVo.apartmentId !=null and queryVo.apartmentId > 0">
+                and agr.apartment_id = #{queryVo.apartmentId}
+            </if>
+            <if test="queryVo.roomNumber !=null and queryVo.roomNumber !=''">
+                and r.room_number = #{queryVo.roomNumber}
+            </if>
+            <if test="queryVo.name !=null and queryVo.name !=''">
+                and agr.name like concat('%',#{queryVo.name},'%')
+            </if>
+            <if test="queryVo.phone !=null and queryVo.phone !=''">
+                and agr.phone like concat('%',#{queryVo.phone},'%')
+            </if>
+        </where>
+    </select>
 </mapper>
