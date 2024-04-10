@@ -19,6 +19,13 @@ spring:
       max-file-size: 100MB
       max-request-size: 150MB
 
+  # redis设置
+  data:
+    redis:
+      host: 192.168.5.20
+      port: 6379
+      database: 0
+
 #用于打印框架生成的sql语句，便于调试
 mybatis-plus:
   configuration:
@@ -31,3 +38,9 @@ minio:
   bucket: pan-ling
 springdoc:
   default-flat-param-object: true
+
+admin:
+  author:
+    path-patterns:
+      include: /admin/**
+      exclude: /admin/login/**

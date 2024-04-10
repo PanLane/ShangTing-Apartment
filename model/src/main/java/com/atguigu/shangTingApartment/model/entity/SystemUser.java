@@ -2,6 +2,7 @@ package com.atguigu.shangTingApartment.model.entity;
 
 import com.atguigu.shangTingApartment.model.enums.BaseStatus;
 import com.atguigu.shangTingApartment.model.enums.SystemUserType;
+import com.baomidou.mybatisplus.annotation.FieldStrategy;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -20,7 +21,7 @@ public class SystemUser extends BaseEntity {
     private String username;
 
     @Schema(description = "密码")
-    @TableField(value = "password")
+    @TableField(value = "password",updateStrategy = FieldStrategy.NOT_NULL)//设置密码不能为空
     private String password;
 
     @Schema(description = "姓名")

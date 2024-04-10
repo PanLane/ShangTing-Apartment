@@ -5,7 +5,7 @@
 <mapper namespace="com.atguigu.shangTingApartment.web.admin.mapper.SystemUserMapper">
 
     <sql id="select_detail">
-        select u.id,username,password,u.name,type,phone,avatar_url,additional_info,post_id,u.status,p.name post_name
+        select u.id,username,u.name,type,phone,avatar_url,additional_info,post_id,u.status,p.name post_name
         from system_user u
         left join system_post p on u.post_id = p.id and p.is_deleted = 0
         where u.is_deleted = 0
