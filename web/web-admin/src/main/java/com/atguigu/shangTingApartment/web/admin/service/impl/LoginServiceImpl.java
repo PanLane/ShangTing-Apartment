@@ -62,6 +62,6 @@ public class LoginServiceImpl implements LoginService {
         if(!systemUser.getPassword().equals(MD5Util.encrypt(loginVo.getPassword()))) throw new ApartmentCustomException(ResultCodeEnum.ADMIN_ACCOUNT_ERROR);
         //登录成功
         //生成并返回token
-        return JwtUtil.createToken(systemUser.getId(), systemUser.getUsername());
+        return JwtUtil.createToken(systemUser.getId(), systemUser.getUsername(),systemUser.getAvatarUrl());
     }
 }

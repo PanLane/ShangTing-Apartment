@@ -2,6 +2,7 @@ package com.atguigu.shangTingApartment.web.admin.controller.login;
 
 
 import com.atguigu.shangTingApartment.common.result.Result;
+import com.atguigu.shangTingApartment.web.admin.context.SystemUserInfoVoContext;
 import com.atguigu.shangTingApartment.web.admin.service.LoginService;
 import com.atguigu.shangTingApartment.web.admin.vo.login.CaptchaVo;
 import com.atguigu.shangTingApartment.web.admin.vo.login.LoginVo;
@@ -35,7 +36,6 @@ public class LoginController {
     @Operation(summary = "获取登陆用户个人信息")
     @GetMapping("info")
     public Result<SystemUserInfoVo> info() {
-
-        return Result.ok();
+        return Result.ok(SystemUserInfoVoContext.get());
     }
 }
