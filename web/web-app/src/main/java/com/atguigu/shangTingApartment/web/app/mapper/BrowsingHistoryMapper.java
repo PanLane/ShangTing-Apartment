@@ -1,7 +1,9 @@
 package com.atguigu.shangTingApartment.web.app.mapper;
 
 import com.atguigu.shangTingApartment.model.entity.BrowsingHistory;
+import com.atguigu.shangTingApartment.web.app.vo.history.HistoryItemVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 /**
 * @author liubo
@@ -11,6 +13,13 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface BrowsingHistoryMapper extends BaseMapper<BrowsingHistory> {
 
+    /**
+     * 根据用户id获取浏览历史
+     * @param page
+     * @param userId
+     * @return
+     */
+    Page<HistoryItemVo> selectCustomPage(Page<HistoryItemVo> page,String userId);
 }
 
 

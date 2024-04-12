@@ -1,7 +1,10 @@
 package com.atguigu.shangTingApartment.web.app.mapper;
 
 import com.atguigu.shangTingApartment.model.entity.ViewAppointment;
+import com.atguigu.shangTingApartment.web.app.vo.appointment.AppointmentItemVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -11,7 +14,12 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface ViewAppointmentMapper extends BaseMapper<ViewAppointment> {
 
-
+    /**
+     * 根据手机号查询个人预约看房列表
+     * @param phone
+     * @return
+     */
+    List<AppointmentItemVo> selectListItem(String phone);
 }
 
 

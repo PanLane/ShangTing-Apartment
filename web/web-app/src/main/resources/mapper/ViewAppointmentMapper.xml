@@ -4,5 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.shangTingApartment.web.app.mapper.ViewAppointmentMapper">
 
-
+    <resultMap id="appointmentItemVo" type="com.atguigu.shangTingApartment.web.app.vo.appointment.AppointmentItemVo">
+        <id property="id" column="id"/>
+        <collection property="graphVoList"/>
+    </resultMap>
+    <select id="selectListItem" resultMap="appointmentItemVo">
+        select v.id,a.name apartment_name,g.name,g.url,v.appointment_time,v.appointment_status
+        from view_appointment v
+        left join apartment_info a on v.apartment_id = a.id and a.is_deleted = 0
+        left join graph_info g on g.item_type = 1 and g.item_id = a.id and g.is_deleted = 0
+        where v.phone = #{phone}
+    </select>
 </mapper>

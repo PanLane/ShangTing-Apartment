@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.app.service;
 
 import com.atguigu.shangTingApartment.model.entity.ViewAppointment;
+import com.atguigu.shangTingApartment.web.app.vo.appointment.AppointmentDetailVo;
+import com.atguigu.shangTingApartment.web.app.vo.appointment.AppointmentItemVo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -10,4 +14,17 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface ViewAppointmentService extends IService<ViewAppointment> {
 
+    /**
+     * 根据手机号查询个人预约看房列表
+     * @param phone
+     * @return
+     */
+    List<AppointmentItemVo> listItem(String phone);
+
+    /**
+     * 根据ID查询预约详情信息
+     * @param id
+     * @return
+     */
+    AppointmentDetailVo getDetailById(Long id);
 }

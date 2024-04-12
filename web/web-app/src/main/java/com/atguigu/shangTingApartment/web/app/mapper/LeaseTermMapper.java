@@ -3,6 +3,8 @@ package com.atguigu.shangTingApartment.web.app.mapper;
 import com.atguigu.shangTingApartment.model.entity.LeaseTerm;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
+import java.util.List;
+
 /**
 * @author liubo
 * @description 针对表【lease_term(租期)】的数据库操作Mapper
@@ -11,6 +13,12 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface LeaseTermMapper extends BaseMapper<LeaseTerm> {
 
+    /**
+     * 根据房间id获取可选获取租期列表
+     * @param id
+     * @return
+     */
+    List<LeaseTerm> selectListByRoomId(Long id);
 }
 
 

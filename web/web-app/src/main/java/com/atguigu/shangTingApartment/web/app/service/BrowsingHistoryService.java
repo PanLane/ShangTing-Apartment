@@ -1,6 +1,8 @@
 package com.atguigu.shangTingApartment.web.app.service;
 
 import com.atguigu.shangTingApartment.model.entity.BrowsingHistory;
+import com.atguigu.shangTingApartment.web.app.vo.history.HistoryItemVo;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -10,4 +12,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface BrowsingHistoryService extends IService<BrowsingHistory> {
 
+    /**
+     * 根据用户id获取浏览历史
+     * @param page
+     * @param userId
+     * @return
+     */
+    Page<HistoryItemVo> customPage(Page<HistoryItemVo> page,String userId);
 }

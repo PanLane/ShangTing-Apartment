@@ -1,7 +1,10 @@
 package com.atguigu.shangTingApartment.web.app.mapper;
 
 import com.atguigu.shangTingApartment.model.entity.FeeValue;
+import com.atguigu.shangTingApartment.web.app.vo.fee.FeeValueVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -10,7 +13,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 * @Entity com.atguigu.lease.model.entity.FeeValue
 */
 public interface FeeValueMapper extends BaseMapper<FeeValue> {
-
 }
 
 

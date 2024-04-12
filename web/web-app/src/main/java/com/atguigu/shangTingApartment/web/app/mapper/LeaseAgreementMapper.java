@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.app.mapper;
 
 import com.atguigu.shangTingApartment.model.entity.LeaseAgreement;
+import com.atguigu.shangTingApartment.web.app.vo.agreement.AgreementDetailVo;
+import com.atguigu.shangTingApartment.web.app.vo.agreement.AgreementItemVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -12,6 +16,19 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 public interface LeaseAgreementMapper extends BaseMapper<LeaseAgreement> {
 
 
+    /**
+     * 根据手机号查找个人租约基本信息列表
+     * @param phone
+     * @return
+     */
+    List<AgreementItemVo> selectListItem(String phone);
+
+    /**
+     * 根据id获取租约详细信息
+     * @param id
+     * @return
+     */
+    AgreementDetailVo selectDetailById(Long id);
 }
 
 

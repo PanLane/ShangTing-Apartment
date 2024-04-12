@@ -5,4 +5,10 @@
 <mapper namespace="com.atguigu.shangTingApartment.web.app.mapper.LeaseTermMapper">
 
 
+    <select id="selectListByRoomId" resultType="com.atguigu.shangTingApartment.model.entity.LeaseTerm">
+        select t.id,t.month_count,t.unit
+        from lease_term t
+        join room_lease_term rt on rt.lease_term_id = t.id
+        where t.is_deleted = 0 and rt.is_deleted = 0 and rt.room_id = #{roomId}
+    </select>
 </mapper>

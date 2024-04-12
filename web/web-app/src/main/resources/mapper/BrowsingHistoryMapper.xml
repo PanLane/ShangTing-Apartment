@@ -4,4 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.shangTingApartment.web.app.mapper.BrowsingHistoryMapper">
 
+    <resultMap id="historyItemVo" type="com.atguigu.shangTingApartment.web.app.vo.history.HistoryItemVo">
+        <id property="id" column="id"/>
+        <collection property="roomGraphVoList" ofType="com.atguigu.shangTingApartment.web.app.vo.graph.GraphVo"/>
+    </resultMap>
+    <select id="selectCustomPage" resultMap="historyItemVo">
+        select
+            h.id,h.user_id,h.room_id,h.browse_time,
+            r.room_number,r.rent,
+            g.name,g.url,
+            a.name apartment_name,a.province_name,a.city_name,a.district_name
+        from browsing_history h
+        left join room_info r on r.is_deleted = 0 and r.id = h.room_id
+        left join graph_info g on g.item_type = 2 and g.item_id = r.id
+        left join apartment_info a on r.apartment_id = a.id and a.is_deleted = 0
+        where h.user_id = #{userId}
+    </select>
 </mapper>

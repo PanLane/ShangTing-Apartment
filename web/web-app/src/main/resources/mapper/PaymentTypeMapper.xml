@@ -5,4 +5,10 @@
 <mapper namespace="com.atguigu.shangTingApartment.web.app.mapper.PaymentTypeMapper">
 
 
+    <select id="selectListByRoomId" resultType="com.atguigu.shangTingApartment.model.entity.PaymentType">
+        select t.id,t.name,t.pay_month_count,t.additional_info
+        from payment_type t
+        join room_payment_type rp on rp.payment_type_id = t.id
+        where t.is_deleted = 0 and rp.is_deleted = 0 and rp.room_id = #{roomId}
+    </select>
 </mapper>

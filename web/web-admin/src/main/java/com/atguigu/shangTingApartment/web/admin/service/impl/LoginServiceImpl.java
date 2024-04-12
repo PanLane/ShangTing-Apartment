@@ -4,7 +4,6 @@ import com.atguigu.shangTingApartment.common.constant.RedisConstant;
 import com.atguigu.shangTingApartment.common.exceptions.ApartmentCustomException;
 import com.atguigu.shangTingApartment.common.result.ResultCodeEnum;
 import com.atguigu.shangTingApartment.common.utils.JwtUtil;
-import com.atguigu.shangTingApartment.common.utils.MD5Util;
 import com.atguigu.shangTingApartment.model.entity.SystemUser;
 import com.atguigu.shangTingApartment.model.enums.BaseStatus;
 import com.atguigu.shangTingApartment.web.admin.mapper.SystemUserMapper;
@@ -13,6 +12,7 @@ import com.atguigu.shangTingApartment.web.admin.vo.login.CaptchaVo;
 import com.atguigu.shangTingApartment.web.admin.vo.login.LoginVo;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.wf.captcha.SpecCaptcha;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -59,9 +59,9 @@ public class LoginServiceImpl implements LoginService {
         //判断账号是否被禁用
         if(systemUser.getStatus() == BaseStatus.DISABLE) throw new ApartmentCustomException(ResultCodeEnum.ADMIN_ACCOUNT_DISABLED_ERROR);
         //判断密码是否正确
-        if(!systemUser.getPassword().equals(MD5Util.encrypt(loginVo.getPassword()))) throw new ApartmentCustomException(ResultCodeEnum.ADMIN_ACCOUNT_ERROR);
+        if(!systemUser.getPassword().equals(DigestUtils.md5Hex(loginVo.getPassword()))) throw new ApartmentCustomException(ResultCodeEnum.ADMIN_ACCOUNT_ERROR);
         //登录成功
         //生成并返回token
-        return JwtUtil.createToken(systemUser.getId(), systemUser.getUsername(),systemUser.getAvatarUrl());
+        return JwtUtil.createToken(systemUser.getId()+"", systemUser.getUsername(),systemUser.getAvatarUrl());
     }
 }

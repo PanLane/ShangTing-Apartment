@@ -9,6 +9,9 @@ import lombok.Data;
 @AllArgsConstructor
 public class UserInfoVo {
 
+    @Schema(description = "用户id")
+    private String userId;
+
     @Schema(description = "用户昵称")
     private String nickname;
 

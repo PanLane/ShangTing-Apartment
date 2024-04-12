@@ -5,4 +5,45 @@
 <mapper namespace="com.atguigu.shangTingApartment.web.app.mapper.ApartmentInfoMapper">
 
 
+    <select id="selectPageItem" resultType="com.atguigu.shangTingApartment.web.app.vo.apartment.ApartmentItemVo">
+        select a.id,name,introduction,district_id,district_name,city_id,city_name,province_id,province_name,
+        address_detail,latitude,longitude,phone,is_release,ifnull(r.totalRoomCount,0) totalRoomCount,ifnull(r.totalRoomCount,0)-ifnull(l.leaseRoomCount,0) freeRoomCount
+        from apartment_info a
+        left join
+        (select apartment_id,count(1) totalRoomCount from room_info where is_deleted = 0 and is_release=1 group by apartment_id) r on r.apartment_id=a.id
+        left join
+        (select apartment_id,count(1) leaseRoomCount from lease_agreement where is_deleted = 0 and status in (2,5,7) group by apartment_id) l on a.id = l.apartment_id
+        where
+        is_deleted = 0
+        <if test="queryVo.provinceId !=null">
+            and province_id = #{queryVo.provinceId}
+        </if>
+        <if test="queryVo.cityId !=null">
+            and city_Id = #{queryVo.cityId}
+        </if>
+        <if test="queryVo.districtId !=null">
+            and district_id = #{queryVo.districtId}
+        </if>
+    </select>
+
+    <select id="selectLabelInfoListById" resultType="com.atguigu.shangTingApartment.model.entity.LabelInfo">
+        select l.id,l.type,l.name
+        from label_info l
+        join apartment_label al on l.id = al.label_id
+        where l.is_deleted = 0 and al.is_deleted = 0 and al.apartment_id = #{id}
+    </select>
+    <select id="selectFacilityInfoListById" resultType="com.atguigu.shangTingApartment.model.entity.FacilityInfo">
+        select f.id,f.type,f.name,f.icon
+        from facility_info f
+        join apartment_facility af on f.id = af.facility_id
+        where f.is_deleted = 0 and af.is_deleted = 0 and af.apartment_id = #{id}
+    </select>
+
+    <select id="selectFeeValueVoList" resultType="com.atguigu.shangTingApartment.web.app.vo.fee.FeeValueVo">
+        select v.id,v.name,v.unit,v.fee_key_id,k.name fee_key_name
+        from fee_value v
+        join fee_key k on v.fee_key_id = k.id
+        join apartment_fee_value afv on afv.fee_value_id = v.id
+        where afv.apartment_id = #{id} and v.is_deleted = 0 and k.is_deleted = 0 and afv.is_deleted = 0
+    </select>
 </mapper>

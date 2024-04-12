@@ -4,5 +4,46 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.shangTingApartment.web.app.mapper.LeaseAgreementMapper">
 
-
+    <resultMap id="agreementItemVoMap" type="com.atguigu.shangTingApartment.web.app.vo.agreement.AgreementItemVo">
+        <id property="id" column="id"/>
+        <association property="roomGraphVoList" javaType="com.atguigu.shangTingApartment.web.app.vo.graph.GraphVo"/>
+    </resultMap>
+    <select id="selectListItem" resultMap="agreementItemVoMap">
+        select
+            l.id,l.status,l.lease_start_date,l.lease_end_date,l.source_type,l.rent,
+            r.room_number,
+            g.name,g.url,
+            if(cnt.singed = 1 and cnt.renewing = 0 and l.status = 2,true,false) isRenewable
+        from lease_agreement l
+        left join room_info r on l.room_id = r.id and r.is_deleted = 0
+        left join graph_info g on l.id = g.item_id and g.item_type = 2 and g.is_deleted = 0
+        left join
+            (select sum(if(status = 2, 1, 0)) singed,sum(if(status = 7, 1, 0)) renewing from lease_agreement where is_deleted = 0 and phone = #{phone}) cnt on true
+        where l.phone = #{phone} and l.is_deleted = 0
+    </select>
+    <resultMap id="agreementDetailVoMap" type="com.atguigu.shangTingApartment.web.app.vo.agreement.AgreementDetailVo">
+        <id property="id" column="l_id"/>
+        <collection property="roomGraphVoList" javaType="com.atguigu.shangTingApartment.web.app.vo.graph.GraphVo">
+            <result property="name" column="ag_name"/>
+            <result property="url" column="ag_url"/>
+        </collection>
+        <collection property="apartmentGraphVoList" javaType="com.atguigu.shangTingApartment.web.app.vo.graph.GraphVo">
+            <result property="name" column="rg_name"/>
+            <result property="url" column="rg_url"/>
+        </collection>
+    </resultMap>
+    <select id="selectDetailById" resultMap="agreementDetailVoMap">
+        select
+            l.id l_id,l.phone,l.name,identification_number,apartment_id,room_id,lease_start_date,lease_end_date,lease_term_id,rent,deposit,payment_type_id,status,source_type,l.additional_info,
+            a.name apartment_name,
+            t.month_count lease_term_month_count,t.unit lease_term_unit,
+            ag.name ag_name,ag.url ag_url,
+            rg.name rg_name,rg.url rg_url
+        from lease_agreement l
+        left join apartment_info a on l.apartment_id = a.id and a.is_deleted = 0
+        left join payment_type p on p.id = l.payment_type_id
+        left join lease_term t on l.lease_term_id = t.id
+        left join graph_info ag on ag.is_deleted = 0 and ag.item_type = 1 and ag.id = a.id
+        left join graph_info rg on rg.is_deleted = 0 and rg.item_type = 2 and rg.id = a.id
+    </select>
 </mapper>

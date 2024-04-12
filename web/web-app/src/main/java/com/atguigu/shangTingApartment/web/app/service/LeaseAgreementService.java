@@ -1,7 +1,11 @@
 package com.atguigu.shangTingApartment.web.app.service;
 
 import com.atguigu.shangTingApartment.model.entity.LeaseAgreement;
+import com.atguigu.shangTingApartment.web.app.vo.agreement.AgreementDetailVo;
+import com.atguigu.shangTingApartment.web.app.vo.agreement.AgreementItemVo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
 * @author liubo
@@ -10,4 +14,17 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface LeaseAgreementService extends IService<LeaseAgreement> {
 
+    /**
+     * 根据手机号查找个人租约基本信息列表
+     * @param phone
+     * @return
+     */
+    List<AgreementItemVo> listItem(String phone);
+
+    /**
+     * 根据id获取租约详细信息
+     * @param id
+     * @return
+     */
+    AgreementDetailVo getDetailById(Long id);
 }

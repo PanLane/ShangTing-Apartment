@@ -1,12 +1,9 @@
 package com.atguigu.shangTingApartment.web.admin.controller.system;
 
 
-import com.atguigu.shangTingApartment.common.exceptions.ApartmentCustomException;
 import com.atguigu.shangTingApartment.common.result.Result;
 import com.atguigu.shangTingApartment.common.result.ResultCodeEnum;
-import com.atguigu.shangTingApartment.common.utils.MD5Util;
 import com.atguigu.shangTingApartment.model.entity.SystemUser;
-import com.atguigu.shangTingApartment.model.entity.UserInfo;
 import com.atguigu.shangTingApartment.model.enums.BaseStatus;
 import com.atguigu.shangTingApartment.web.admin.service.SystemUserService;
 import com.atguigu.shangTingApartment.web.admin.vo.system.user.SystemUserItemVo;
@@ -17,6 +14,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,7 +45,7 @@ public class SystemUserController {
     @PostMapping("saveOrUpdate")
     public Result saveOrUpdate(@RequestBody SystemUser systemUser) {
         //密码明文转密文
-        systemUser.setPassword(MD5Util.encrypt(systemUser.getPassword()));
+        systemUser.setPassword(DigestUtils.md5Hex(systemUser.getPassword()));
         return systemUserService.saveOrUpdate(systemUser) ? Result.ok() : Result.fail();
     }
 

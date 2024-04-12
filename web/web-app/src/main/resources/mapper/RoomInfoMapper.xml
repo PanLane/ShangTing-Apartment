@@ -4,4 +4,94 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.shangTingApartment.web.app.mapper.RoomInfoMapper">
 
+
+    <resultMap id="roomItemVoMap" type="com.atguigu.shangTingApartment.web.app.vo.room.RoomItemVo">
+        <id property="id" column="r_id"/>
+        <association property="apartmentInfo" javaType="com.atguigu.shangTingApartment.model.entity.ApartmentInfo">
+            <id property="id" column="a_id"/>
+        </association>
+        <collection property="graphVoList" ofType="com.atguigu.shangTingApartment.web.app.vo.graph.GraphVo" select="selectGraphsByRoomId" column="r_id"/>
+        <collection property="labelInfoList" ofType="com.atguigu.shangTingApartment.model.entity.LabelInfo" select="selectLabelsByRoomId" column="r_id"/>
+    </resultMap>
+    <sql id="selectRoomPage">
+        select
+            r.id r_id,r.room_number,r.rent,
+            a.id a_id,a.name,a.introduction,a.district_id,a.district_name,a.city_id,a.city_name,a.province_id,a.province_name,a.address_detail,a.latitude,a.longitude,a.phone,a.is_release
+        from room_info r
+        left join apartment_info a on r.apartment_id = a.id and a.is_deleted = 0
+        where r.is_deleted = 0
+    </sql>
+    <select id="pageItem" resultMap="roomItemVoMap">
+        <include refid="selectRoomPage"/>
+        <if test="queryVo.provinceId != null">
+            and a.province_id = #{queryVo.provinceId}
+        </if>
+        <if test="queryVo.cityId != null">
+            and a.city_id = #{queryVo.cityId}
+        </if>
+        <if test="queryVo.districtId != null">
+            and a.district_id = #{queryVo.districtId}
+        </if>
+        <if test="queryVo.minRent != null and queryVo.maxRent != null">
+            and r.rent &gt; #{queryVo.minRent} and r.rent &lt; #{queryVo.maxRent}
+        </if>
+        <if test="queryVo.paymentTypeId != null">
+            and r.id in (select room_id from room_payment_type where is_deleted = 0 and payment_type_id = #{queryVo.paymentTypeId})
+        </if>
+        <if test="queryVo.orderType !=null and queryVo.orderType!=''">
+            order by #{queryVo.orderType}
+        </if>
+    </select>
+
+    <!--根据房间id获取房间图片列表-->
+    <select id="selectGraphsByRoomId" resultType="com.atguigu.shangTingApartment.web.app.vo.graph.GraphVo">
+        select g.name,g.url from graph_info g where g.is_deleted = 0 and g.item_type = 2 and g.item_id = #{id}
+    </select>
+    <!--根据房间id获取标签列表-->
+    <select id="selectLabelsByRoomId" resultType="com.atguigu.shangTingApartment.model.entity.LabelInfo">
+        select l.id,l.type,l.name
+        from label_info l
+        join room_label rl on l.id = rl.label_id
+        where l.is_deleted = 0 and rl.is_deleted = 0 and rl.room_id = #{id}
+    </select>
+
+    <select id="selectAttrValueVoList" resultType="com.atguigu.shangTingApartment.web.app.vo.attr.AttrValueVo">
+        select av.id,av.name,av.attr_key_id,ak.name attrKeyName
+        from attr_key ak
+                 join attr_value av on ak.id = av.attr_key_id
+                 join room_attr_value rav on rav.attr_value_id = av.id
+        where rav.room_id = #{id} and ak.is_deleted = 0 and av.is_deleted = 0 and rav.is_deleted = 0
+    </select>
+    <select id="selectFacilityInfoList" resultType="com.atguigu.shangTingApartment.model.entity.FacilityInfo">
+        select f.id,f.type,f.name,f.icon
+        from facility_info f
+                 join room_facility rf on rf.facility_id = f.id
+        where rf.room_id = #{id} and f.is_deleted = 0 and rf.is_deleted = 0
+    </select>
+    <select id="selectLabelInfoList" resultType="com.atguigu.shangTingApartment.model.entity.LabelInfo">
+        select l.id,l.type,l.name
+        from label_info l
+                 join room_label rl on rl.label_id = l.id
+        where rl.room_id = #{id} and rl.is_deleted = 0 and l.is_deleted = 0
+    </select>
+    <select id="selectPaymentTypeList" resultType="com.atguigu.shangTingApartment.model.entity.PaymentType">
+        select p.id,p.name,p.pay_month_count,p.additional_info
+        from payment_type p
+                 join room_payment_type rp on rp.payment_type_id = p.id
+        where rp.room_id = #{id} and rp.is_deleted = 0 and p.is_deleted = 0
+    </select>
+    <select id="selectLeaseTermList" resultType="com.atguigu.shangTingApartment.model.entity.LeaseTerm">
+        select l.id,l.month_count,l.unit
+        from lease_term l
+                 join room_lease_term rl on rl.lease_term_id = l.id
+        where rl.room_id = #{id} and rl.is_deleted = 0 and l.is_deleted = 0
+    </select>
+    <select id="selectMinRentByApartmentId" resultType="java.lang.Integer">
+        select min(rent) from room_info r where r.apartment_id = #{id}
+    </select>
+
+    <select id="selectPageItemByApartmentId" resultMap="roomItemVoMap">
+        <include refid="selectRoomPage"/>
+        and a.id = #{id}
+    </select>
 </mapper>
